@@ -7,7 +7,7 @@
 The project consists of 3 components:
 
 - metrics_app: send random statistics to log
-- promotheus: provides a database to store statistics
+- prometheus: provides a database to store statistics
 - grafana: provides a configurable dashboards
 
 1. Examine `compose.yml` and try to identify the services
