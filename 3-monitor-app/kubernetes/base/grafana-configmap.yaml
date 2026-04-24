@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: grafana-datasources
-  namespace: monitoring
+  namespace: replace-namespace
 data:
   datasource.yaml: |
     apiVersion: 1
@@ -10,6 +10,6 @@ data:
       - name: Prometheus
         type: prometheus
         access: proxy
-        url: http://prometheus.monitoring.svc.cluster.local:9090
+        url: http://prometheus:9090
         isDefault: true
         editable: true

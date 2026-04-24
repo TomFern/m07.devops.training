@@ -2,7 +2,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   name: prometheus-config
-  namespace: monitoring
+  namespace: replace-namespace
 data:
   prometheus.yml: |
     global:
@@ -16,3 +16,8 @@ data:
       - job_name: 'metrics_app'
         static_configs:
           - targets: ['metrics-app:8000']
+
+      - job_name: 'grafana'
+        static_configs:
+          - targets: ['grafana:3000']
+        metrics_path: /metrics
