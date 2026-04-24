@@ -1,6 +1,6 @@
 # Module 7 - Monitoring on Kubernetes
 
-**Goal**: Deploy Prometheus and Grafana to an existing k3s cluster and build a basic dashboard backed by a sample metrics app.
+**Goal**: Deploy Prometheus and Grafana to an existing Kubernetes cluster and build a basic dashboard backed by a sample metrics app.
 
 ## What you deploy
 
@@ -10,14 +10,14 @@ The manifests in `kubernetes/` create:
 - `prometheus`: collects metrics from itself and from `metrics-app`.
 - `grafana`: pre-provisioned with a Prometheus data source.
 
-Everything is installed in the `monitoring` namespace.
+Everything is to be installed in the `monitoring` namespace.
 
 ## Prerequisites
 
-- Select a namespace for your team
-- Select port numbers for your team:
-  - Prometheus: 9090 or 9091
-  - Grafana: 30040 or 30080
+- Complete exercise 2
+<!-- - Select port numbers for your team: -->
+<!--   - Prometheus: 9090 or 9095 -->
+<!--   - Grafana: 30040 or 30080 -->
 
 Open `kubernetes/grafana.yml` and change the port number to your teams number. Commit the file.
 
@@ -44,13 +44,13 @@ Create a pipeline with the following blocks:
 
 From your machine, run the following commands:
 
-If your team uses port 9090
+If your team uses port `<YOUR-PORT>`
 
    ```bash
-   kubectl port-forward svc/prometheus -n monitoring 9090:9090
+   kubectl port-forward svc/prometheus -n monitoring YOUR-PORT>:<YOUR-PORT>`
    ```
 
-Open <http://localhost:9090> to confirm the Prometheus UI is running and that the `metrics_app` target is up (Status ➝ Targets).
+Open `http://localhost:<YOUR-PORT>` to confirm the Prometheus UI is running and that the `metrics_app` target is up (Status ➝ Targets).
 
 ## Configure Grafana
 
@@ -65,5 +65,5 @@ Once you are done exploring dashboards, clean everything up with:
 
 ## Notes
 
-- The original `docker-compose.yml` is still available if you want to compare the container-based setup with the Kubernetes manifests.
+- The original `compose.yml` is still available if you want to compare the container-based setup with the Kubernetes manifests.
 - Adjust `kubernetes/grafana.yaml` if you would rather expose Grafana differently (for example, via Ingress or LoadBalancer).

@@ -1,0 +1,31 @@
+# clusterroles-group1.yml - RBAC overrides for monitoring-group1
+prometheusOperator:
+  rbac:
+    create: true
+    pspEnabled: false
+
+prometheus:
+  rbac:
+    create: true
+    clusterRoleName: monitoring-group1-prometheus
+    clusterRoleBindingName: monitoring-group1-prometheus
+
+alertmanager:
+  rbac:
+    create: true
+    clusterRoleName: monitoring-group1-alertmanager
+    clusterRoleBindingName: monitoring-group1-alertmanager
+
+grafana:
+  rbac:
+    create: true
+    clusterRoleName: monitoring-group1-grafana-clusterrole
+    clusterRoleBindingName: monitoring-group1-grafana-clusterrolebinding
+
+kubeStateMetrics:
+  rbac:
+    create: true
+
+nodeExporter:
+  rbac:
+    create: true
