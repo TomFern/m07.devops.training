@@ -5,12 +5,3 @@ resources:
   - ../../base
 
 namespace: g4
-
-patches:
-  - target:
-      kind: Service
-      name: grafana
-    patch: |
-      - op: replace
-        path: /spec/ports/0/nodePort
-        value: 30044
