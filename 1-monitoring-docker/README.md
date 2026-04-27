@@ -1,4 +1,4 @@
-# Module 5 - Monitoring First Steps
+# Module 7 - Monitoring First Steps
 
 **Goal**: Learn to configure prometheus and grafana
 

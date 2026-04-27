@@ -2,6 +2,7 @@
 
 Design and run a monitoring stack for a single-node Kubernetes lab cluster. By the end of the exercise you will have Prometheus scraping Kubernetes control-plane and node metrics, and Grafana dashboards visualizing cluster health.
 
+
 ## Learning goals
 
 - Deploy Prometheus and Grafana on k3s using upstream Helm charts
@@ -15,6 +16,8 @@ Design and run a monitoring stack for a single-node Kubernetes lab cluster. By t
 - Copy the provided config file to `$HOME/.kube/config`
 - Test the connection: `kubectl get nodes`
 - Create namespace for your group: `kubectl create ns g1`
+
+NOTE: if you cannot connect to the cluster (timeout), try using the guest WI-FI. The main network seems to filter access to port 6443 which is needed to connect to Kubernetes.
 
 ## Exercise
 
@@ -92,7 +95,7 @@ Run the following commands from your machine (you will need to have kubectl inst
 Find the admin password. The command is in the output of the Grafana installation (replace with your group namespace)
 
 ```shell
-kubectl get secret --namespace g1 -l app.kubernetes.io/component=admin-secret -o jsonpath="{.items[0].data.admin-password}" | base64 --decode ; echo
+kubectl get secret --namespace g0 -l app.kubernetes.io/component=admin-secret -o jsonpath="{.items[0].data.admin-password}" | base64 --decode ; echo
 ```
 
 Take note of the random password generated.

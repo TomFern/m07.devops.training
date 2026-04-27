@@ -1,5 +1,7 @@
 # clusterroles-group1.yml - RBAC overrides for monitoring-group1
 prometheusOperator:
+  extraArgs:
+    - "--namespaces=group-1"  # Restrict to group-2 only
   rbac:
     create: true
     pspEnabled: false
